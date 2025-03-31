@@ -1,1 +1,0 @@
-# LimpaTudo_Treinamento
