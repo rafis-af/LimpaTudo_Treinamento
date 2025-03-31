@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Troca de Display</title>
+  <style>
+    /* Adiciona transição suave para quando o display é alterado */
+#texto-ciclo {
+  background-color: #f0f0f0; /* Cor de fundo para destaque */
+  padding: 15px;           /* Espaçamento interno */
+  border: 1px solid #ddd;  /* Borda ao redor */
+  border-radius: 5px;      /* Bordas arredondadas */
+  transition: opacity 0.3s ease; /* Transição para suavidade */
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Imagem que funciona como botão -->
+  <img id="árvore-ciclo" src="sua-imagem.png" alt="Clique aqui" style="cursor: pointer; width: 200px;">
+
+  <!-- Div que será mostrada/ocultada -->
+  <div id="texto-ciclo" style="display: none;">
+    <p>Este é o conteúdo revelado quando você clica na árvore.</p>
+    <p>Adicione aqui o texto que quiser!</p>
+  </div>
+
+  <script>
+    // Seleciona a imagem e a div de texto
+const arvoreCiclo = document.getElementById('árvore-ciclo');
+const textoCiclo = document.getElementById('texto-ciclo');
+
+// Adiciona evento de clique na imagem
+arvoreCiclo.addEventListener('click', () => {
+  // Verifica o estado atual da div e alterna o display
+  if (textoCiclo.style.display === 'none' || textoCiclo.style.display === '') {
+    textoCiclo.style.display = 'block'; // Mostra o conteúdo
+  } else {
+    textoCiclo.style.display = 'none'; // Oculta o conteúdo
+  }
+});
+
+  </script>
+</body>
+</html>

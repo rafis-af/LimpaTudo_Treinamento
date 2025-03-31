@@ -1,0 +1,3644 @@
+  * {
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #F0FDFE;
+    overflow-x: hidden; 
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #00b6b6;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 30px 0;
+    z-index: 10;
+  }
+  
+  .logo img {
+    width: 100px; 
+    height: auto;
+  }
+  .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+  .side-menu {
+  position: fixed;
+  top: 0;
+  right: -100%; /* Oculto inicialmente */
+  width: 250px; /* Largura do menu */
+  height: 100%;
+  background-color: #ffffff; /* Fundo branco */
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2); /* Sombra para separação */
+  transition: right 0.3s ease; /* Suaviza a transição ao abrir/fechar */
+  z-index: 15; /* Acima do conteúdo principal */
+  padding: 20px; /* Espaçamento interno */
+}
+
+.side-menu.active {
+  right: 0; /* Move o menu para a posição visível */
+}
+
+.side-menu ul {
+  list-style: none; /* Remove os marcadores da lista */
+  padding: 0; /* Remove o padding padrão */
+  margin: 0; /* Remove margens padrão */
+  
+}
+
+.side-menu ul li {
+  margin: 15px 0; /* Espaçamento entre itens */
+}
+
+.side-menu ul li a {
+  text-decoration: none; /* Remove sublinhado */
+  color: #005d5d; /* Cor do texto dos links */
+  font-size: 18px; /* Tamanho da fonte dos links */
+  display: block; /* Ocupa toda a largura do item */
+  padding: 10px; /* Espaçamento interno do link */
+  border-radius: 5px; /* Bordas arredondadas nos links */
+  
+  
+transition: background-color 0.3s ease; /* Suaviza a mudança de fundo */
+}
+
+.side-menu ul li a:hover {
+  background-color: #f0fdfe; /* Cor de fundo ao passar o mouse */
+  color: #00b6b6; /* Cor do texto ao passar o mouse */
+}
+
+/* Ícone do Menu */
+.menu-icon {
+  display: none; /* Oculto em telas maiores */
+  cursor: pointer; /* Ícone deve indicar interatividade */
+  position: absolute;
+  right: 20px; /* Alinha o ícone à direita */
+  top: 20px; /* Define a altura do ícone no topo */
+  z-index: 20; /* Acima do menu lateral */
+}
+
+.menu-icon img {
+  width: 43px; /* Tamanho do ícone */
+  height: auto;
+}
+
+
+  .nav-links {
+    display: flex;
+    gap: 30px;
+  }
+  
+  .nav-links.left,
+  .nav-links.right {
+    list-style: none;
+    display: flex;
+  }
+  
+  .nav-links.left {
+    margin-right: auto;
+  }
+  
+  .nav-links.right {
+    margin-left: auto;
+  }
+  
+  .nav-links li {
+    position: relative;
+  }
+  
+  .nav-links li:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background-color: #fff;
+    border-radius: 50%;
+  }
+  
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 25px;
+    padding: 0 90px;
+    transition: 1s all;
+  }
+  
+  .nav-links a:hover {
+    color: blue;
+  }
+  
+  .home {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 100px; 
+    background-image: url('https://i.imgur.com/xWmdNi0.jpg');
+    background-size: cover;
+    
+  }
+
+  
+  .home h1 {
+    color: black;
+    font-size: 48px;
+    margin-top: 50px;
+  
+  }
+  .home strong{
+    font-size: 40px ;
+  }
+  
+  .home p {
+    color: #028989;
+    font-size: 30px;
+    padding-bottom: 40px;
+    margin-top: 20px;
+  }
+  
+  #btn {
+    background-color: blue;
+    color: white;
+    padding: 20px 40px;
+    border-radius: 30px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 20px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    
+  }
+  
+  #btn:hover {
+    background-color: #00b6b6;
+  }
+  
+  .home a {
+    margin-top: 10%;
+  }
+  
+  #servicos {
+    margin-top: -1%;
+  }
+  
+  #container {
+    position: relative;
+    width: 100vw;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; 
+    
+  }
+  
+  #texto-revelado {
+    font-size: 36px;
+    color: black;
+    opacity: 0;
+    text-align: center;
+    margin-top: -150px;
+    font-style: italic;
+  }
+  
+  #mancha {
+    position: absolute;
+    width: 300px;
+    height: auto;
+    top: 50%;
+    left: 22%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    opacity: 0.9;
+    animation: desaparecerMancha 1s forwards; 
+    animation-delay: 1s;
+  }
+  
+  @keyframes desaparecerMancha {
+    0% {
+      opacity: 0.9;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  #mancha img {
+    width: 400%;
+    height: 300%;
+    object-fit: cover;
+  }
+  
+  #vassoura {
+    position: absolute;
+    width: 70px;
+    height: auto;
+    background-size: contain;
+    background-repeat: no-repeat;
+    top: 100%;
+    left: -10%;
+    z-index: 2;
+    animation: moverVassoura 3s ease-in-out forwards;
+  }
+  
+  @keyframes moverVassoura {
+    0% {
+        top: -35%;
+        left: 0%;
+        transform: rotate(0deg);
+    }
+    40% {
+        left: 30%;
+        transform: rotate(35deg);
+    }
+    47% {
+        transform: rotate(-10deg);
+    }
+    54% {
+        transform: rotate(35deg);
+    }
+    61% {
+        transform: rotate(-10deg);
+    }
+    68% {
+        transform: rotate(35deg);
+    }
+    100% {
+        top: -35%;
+        left: 120%; 
+        transform: rotate(-10deg);
+    }
+  }
+  
+  #vassoura img {
+    width: 220px;
+  }
+  
+  #vassoura {
+    animation: moverVassoura 3s ease-in-out forwards;
+  }
+  
+  .sobre {
+    background-image: url('https://imgur.com/uLdg7uv.jpg');
+    padding: 0 0 50px 0;
+    text-align: center; 
+    margin-top: -100px;
+}
+  .sobre h2 {
+    font-size: 80px;
+    font-style: italic;
+    padding: 120px 0 0 0;
+    font-family: 'Domine', serif;
+    color: #F6E3A0;
+    text-align: center;
+}
+
+.resumido {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    width: 70%; 
+    margin: 0 auto; 
+    font-size: 23px;
+    text-align: center;
+    font-style: italic;
+    width: 50%;
+    margin-top: 20px;
+    padding: 0 0 20px 0;
+}
+  .hidden-content {
+    display: none;
+    color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+    width: 50%;
+    text-align: justify; 
+    font-size: 18px;
+    margin-left: 10%; 
+    height: 40vw;
+}
+h3{
+  color: #F6E3A0;
+  font-size: 80px;
+
+  margin-left: 23%;
+  font-family: 'Domine', serif;
+  font-style: italic;
+}
+
+.escondido{
+    text-align: justify;
+    margin-left: 0; 
+    margin-right: auto;
+    font-style: italic;
+    text-indent: 2em; 
+    font-size: 20px;
+    width: 80%; 
+    margin-top: 20px;
+} 
+.escondido2 {
+    text-align: justify;
+    margin-left: 0; 
+    margin-right: auto;
+    font-style: italic;
+    text-indent: 2em;
+    font-size: 20px;
+    width: 80%;
+    margin-top: 20px;
+}
+.foto-dono{
+  width: 350px;
+  position: relative;
+  top: -450px;
+  left: 100%;
+  border-radius: 30px;
+  box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+.button {
+    margin-top: 40px;
+    padding: 20px 40px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color 0.3s;
+    display: inline-block; 
+    margin: 20px auto 0 auto; 
+    text-align: center;
+    transition: 0.5s all;
+    margin-bottom: 50px;
+    animation: pulse 2s infinite;
+
+}
+
+@keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+.button:hover {
+    background-color: #00b6b6;
+    transform: scale(1.05);
+}
+
+  #servicos{
+    background-image: url("https://imgur.com/MMJWRrm.jpg");
+    margin-top: 0%;
+  }
+
+  .services h4 {
+    position: relative; 
+    left: -28%; 
+    top: 80px; 
+    font-size: 80px;
+    color: #005d5d;
+    font-family: 'Domine', serif;
+    font-style: italic;
+}
+  
+  .services {
+    padding: 0 50px 50px 50px;
+    text-align: center;
+    
+  }
+  .services h5{
+    
+    font-size: 35px;
+    font-style: italic;
+    color: #005d5d;
+  }
+  .services p{
+    text-align: justify;
+    font-size: 20px;
+    margin-top: 15px;
+    color: #005d5d;  
+  }
+  
+  .service-container {
+    justify-content: space-around;
+    margin-top: 100px;
+  }
+  
+  .service-item {
+    display: flex;
+    align-items: center;
+    gap: 7%; 
+    margin-bottom: 40px;
+    width: 100%; 
+    
+}
+
+.service-right {
+    flex-direction: row-reverse; 
+    justify-content: flex-end;
+    align-content: center;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.service-left {
+    flex-direction: row-reverse; 
+    justify-content: flex-start;
+    margin-left: -200px;
+}
+.imagem-escondida{
+  display:none;
+}
+
+.service-item img {
+    width: 25%; 
+    height: auto;
+    border-radius: 30px;
+    box-shadow: 15px 15px 5px rgba(0, 0, 0, 0.5);
+
+}
+
+.service-item div {
+    width: 40%; 
+    text-align: justify;
+}
+.foto-escondida{
+  width: 25%; 
+    height: auto;
+    border-radius: 30px;
+    box-shadow: 15px 15px 5px rgba(0, 0, 0, 0.5);
+}
+.depoimentos {
+    background-image: url('https://imgur.com/EcAsMp1.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    padding: 200px 0 0 0;
+    margin: 0; 
+    position: relative; 
+    left: 0; 
+    box-sizing: border-box;
+    margin-top: -1%;
+}
+.depoimentos h6 {
+    color: #F6E3A0;
+    font-size: 80px;
+    font-family: 'Domine', serif;
+    font-style: italic;
+    text-align: left;
+    margin-left: 5%;
+    margin-bottom: 40px;
+    
+}
+.custom-carrossel-container {
+  position: relative;
+  max-width: 1200px; 
+  margin: auto;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.custom-carrossel {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.custom-slide-item {
+  min-width: 33.33%; 
+  box-sizing: border-box;
+  padding: 10px;
+  text-align: center;
+}
+
+.custom-slide-item img {
+  width: 90%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.custom-prev,
+.custom-next {
+  background-color: #00b6b6;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 20px 6px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9;
+  transition: background-color 0.3s;
+}
+
+.custom-prev:hover,
+.custom-next:hover {
+  background-color: #005d5d;
+}
+
+.custom-prev {
+  left: 10px;
+}
+
+.custom-next {
+  right: 10px;
+}
+
+
+.fundo{
+  background-image: url('https://imgur.com/JVC7dvL.jpg');
+}
+
+
+    .spray-can {
+      width: 8%; 
+      display: flex;
+      justify-content: flex-start;
+      padding: 10px;
+      margin-left: 80%;      
+    }
+
+    .spray-can img {
+      width: 200%;
+      height: auto;
+      margin-top: 200px;
+    }
+
+    .animated-image {
+      position: absolute;
+      width: 500px;
+      height: auto;
+      opacity: 0;
+      animation: moveToCenter 1s forwards ease-in-out;
+      margin-top: -570px;
+    }
+
+    @keyframes moveToCenter {
+      0% {
+        transform: translate(55vw, 4vw);
+        opacity: 0;
+      }
+      10%{
+        opacity: 1;
+      }
+      80% {
+        opacity: 1;
+      }
+      100% {
+        transform: translate(32vw, 4vw);
+        opacity: 0;
+        
+      }
+    }
+
+
+    .botao {
+      background-color: #00b6b6;
+      color: white;
+      border: none;
+      padding: 20px 40px;
+      cursor: pointer;
+      font-size: 25px;
+      border-radius: 5px;
+      opacity: 0;
+      transition: opacity 1s;
+      transition: 1s all;
+      display: none;
+      z-index: 2;
+      position:absolute;
+      right: 40%;
+      animation: pulse 2s infinite;
+      border-radius: 30px;
+      box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.3);
+      margin-top: -29%;
+    }
+
+    .botao:hover {
+      background-color: blue;
+      transform: scale(1.1);
+    }
+    
+
+    .form-wrapper {
+      display: none; 
+      width: 60%;
+      max-width: 600px;
+      margin-top: -350px;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-left: 32%;
+    }
+
+    .phone-info {
+      font-size: 25px;
+      color: #000000;
+      padding: 5px 0 5px 0;
+      text-align: center;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      border-radius: 30px;
+      margin-bottom: 10px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .contact-form textarea {
+      resize: none;
+      height: 65px;
+    }
+
+    .contact-form button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      cursor: pointer;
+      font-size: 20px;
+      border-radius: 20px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .contact-form button:hover {
+      background-color: #2980b9;
+    }
+    .localização {
+    background-image: url('https://imgur.com/ZUCgcMG.jpg');
+    background-size: cover;
+    height: 500px; 
+    position: relative;
+    z-index: 2;
+}
+
+.localização h6, 
+.localização .mapa,
+.localização div {
+    position: relative;
+    top: 160px;
+    z-index: 3;
+}
+    .localização h6{
+    color: #005d5d;
+    font-size: 60px;
+    font-family: 'Domine', serif;
+    font-style: italic;
+    text-align: left;
+    margin-left: 5%;
+    }
+    .localização div{
+      margin-left: 5%;
+      font-size: 20px;
+      color: #005d5d;
+      margin-top: 10px;
+    }
+    iframe{
+      border-radius: 30px;
+      box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.3);
+      position: relative;
+      left: 50%;
+      margin-top: -200px;
+      margin-bottom: 3vw;
+    }
+
+  .footer .social-links a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 20px;
+  }
+  .footer {
+    background-color: #00b6b6;
+    color: white;
+    text-align: center;
+    padding: 10px;
+  }
+  .linha{
+    width: 3px; background-color: white; height: 150px; margin: 0 20px;
+  }
+
+  .footer ul {
+    list-style-type: none;
+    width: 10%;
+  }
+
+  .footer li {
+    text-align: left;
+    text-decoration: underline;
+    
+  }
+  .logo-rodape{
+    width: 15%;
+    margin-left: 7%;
+  }
+  .desenvolvido{
+    display: flex;
+    text-align: center;
+    align-items: center; 
+    text-align: right;
+    margin-right: 30px;
+  }
+  .logo-junior{
+width: 60px; margin-left: 10px; margin-top: 40px;
+text-align: center;
+  }
+  .texto-desenvolvido{
+    font-size: 15px; color: white; margin: 0 0 -40px 0;
+    text-align: center;
+  }
+
+  footer li a {
+    text-decoration: none;
+    color: white;
+  }
+
+  footer li a:hover {
+    color: blue;
+  }
+  .texto-footer{
+    text-align: left;
+
+    
+  }
+  .endereço p{
+    margin-top: -100px;
+  }
+  .e-mail{
+    margin: 20px 0 50px 0;
+    color: white;
+    
+  }
+  .endereço{
+    margin: 0; color: white;
+  }
+.espaço{
+  display: flex; align-items: center; gap: 10px; margin-top: 10px;
+}  
+.texto-footer{
+  flex: 1; text-align: left; display: flex; align-items: center; gap: 10px;
+}
+.mapa{
+  top: 13vw;
+  width: 100%;
+  left: -90px;
+  height: 200px;
+}
+
+
+
+@media screen and (min-width:1201px) and (max-width: 1400px){
+    .menu-icon {
+      display: none;
+      position: fixed;
+  
+    }
+  
+    .nav-links {
+      display: flex;
+    }
+  
+    .side-menu {
+      width: 36%; 
+    }
+  
+      #mancha img{
+        width: 270%;
+      }
+      #vassoura img{
+        width: 20vw;
+      }
+      @keyframes moverVassoura {
+      0% {
+          top: -25%;
+          left: 0%;
+          transform: rotate(0deg);
+      }
+      40% {
+          left: 30%;
+          transform: rotate(35deg);
+      }
+      47% {
+          transform: rotate(-10deg);
+      }
+      54% {
+          transform: rotate(35deg);
+      }
+      61% {
+          transform: rotate(-10deg);
+      }
+      68% {
+          transform: rotate(35deg);
+      }
+      100% {
+          top: -25%;
+          left: 120%; 
+          transform: rotate(-10deg);
+      }
+    }
+      iframe{
+        display: inline;
+      left: 300px;
+      width: 63%;
+      top: 27vw;
+  
+      }
+      .imagem-escondida{
+        display: block;
+      }
+      .foto2{
+        display: none;
+      }
+      .spray-can {
+        display: flex;
+      }
+      .desenvolvido{
+        display: inline;
+        margin-right: 70px;
+      }
+      .lista{
+        font-size: 14px;
+        display: flex;
+      }
+        .logo-rodape{
+          width: 200px;
+        }
+        .service-item {
+      display: inline;
+      align-items: center;
+      gap: 7%; 
+      margin-bottom: 40px;
+      width: 100%; 
+  }
+  .service-item div{
+    width: 100%;
+  }
+  .service-item img{
+    box-shadow: none;
+  }
+  .foto-escondida {
+  
+      box-shadow: none;
+      width: 55vw;
+      margin-top: 20px;
+  }
+  
+      
+      .depoimentos h6{
+        font-size: 8vw;
+        margin-left: 3vw;
+        margin-top: 50px;
+      }
+      .depoimentos{
+        padding: 100px 0 0 0;
+      }
+      .custom-slide-item img {
+      width: 95%;
+      height: auto;
+      border-radius: 10px;
+      
+  }
+      .animated-image{
+        display: flex;
+        margin-top: -38vw;
+      }
+      .e-mail{
+        display: flex;
+      }
+      .endereço{
+        display: flex;
+      }
+  
+  .service-right {
+      margin-left: 0;
+      margin-right: 0;
+  }
+  
+  .service-left {
+      margin-left: 0;
+  }
+  .service-item img{
+    display: none;
+  }
+  .localização h6{
+    font-size: 13vw;
+  }
+  .hidden-content{
+    height: auto;
+    padding: 5px;
+    margin-top: 0;
+  }
+  .foto-dono{
+    left: 0;
+    top: 20px;
+    width: 70%;
+    left: 50%;
+  }
+  #servicos{
+    margin-top: -1%;
+  }
+  
+  
+    .fundo{
+      background-color: #F4FDFE;
+      background-image: none;
+      margin-top: -12vw;
+    }
+  
+  h3{
+    margin-left: 0;
+    font-size: 8vw;
+  }
+  .custom-slide-item {
+    margin-bottom: 30px; 
+    min-width: 33%;
+  }
+  .escondido2{
+    width: 172%;
+    font-size: 20px;
+    margin-left: -12px;
+  }
+  #servicos{
+      background-image: url("https://imgur.com/MMJWRrm.jpg");
+      margin-top: -1%;
+    }
+  
+    .services h4 {
+      position: relative; 
+      left: -28%; 
+      top: 80px; 
+      font-size: 80px;
+      color: #005d5d;
+      font-family: 'Domine', serif;
+      font-style: italic;
+  }
+    
+    .services {
+      padding: 0 50px 50px 50px;
+      text-align: center;
+      
+    }
+    .services h5{
+      
+      font-size: 35px;
+      font-style: italic;
+      color: #005d5d;
+    }
+    .services p{
+      text-align: justify;
+      font-size: 20px;
+      margin-top: 15px;
+      color: #005d5d;  
+    }
+    
+    .service-container {
+      justify-content: space-around;
+      margin-top: 100px;
+    }
+    
+    .service-item {
+      display: flex;
+      align-items: center;
+      gap: 7%; 
+      margin-bottom: 40px;
+      width: 100%; 
+      
+  }
+  
+  .service-right {
+      flex-direction: row-reverse; 
+      justify-content: flex-end;
+      align-content: center;
+      margin-left: 50px;
+      margin-right: 100px;
+  }
+  
+  .service-left {
+      flex-direction: row-reverse; 
+      justify-content: flex-start;
+      margin-left: -200px;
+  }
+  .imagem-escondida{
+    display:none;
+  }
+  
+  .service-item img {
+      width: 25%; 
+      height: auto;
+      border-radius: 30px;
+      box-shadow: 15px 15px 5px rgba(0, 0, 0, 0.5);
+      display: flex;
+  
+  }
+  
+  .service-item div {
+      width: 40%; 
+      text-align: justify;
+  }
+  .foto-escondida{
+    width: 25%; 
+      height: auto;
+      border-radius: 30px;
+      box-shadow: 15px 15px 5px rgba(0, 0, 0, 0.5);
+  }
+  .resumido{
+    width: 97%;
+  }
+  .localização h6{
+    top: 36px;
+    font-size: 8vw;
+  }
+  .localização div{
+    top: 36px;
+    margin-top: 30px;
+  }
+  .form-wrapper {
+          margin-top: -21vw;
+          margin-left: 23vw;
+      }
+      .localização .mapa, .localização div {
+      position: relative;
+      top: 25px;
+      z-index: 3;
+  }
+  .localização{
+    height: 50vw;
+  }
+  .sobre h2{
+    font-size: 7vw;
+  }
+  .texto-footer{
+    display: flex;
+  }
+  .nav-links a{
+    display: flex;
+    padding: 0 6vw;
+  }
+  .nav-links li:not(:last-child)::after{
+    display: flex;
+  }
+  .navbar, .side-menu, .custom-carrossel-container {
+      max-width: 100%;
+      overflow-x: hidden;
+  }
+  
+  .custom-carrossel {
+      display: flex;
+      flex-wrap: nowrap;
+  }
+  
+  iframe {
+      max-width: 100%;
+      margin-top: -50vw;
+  }
+  
+  .navbar{
+    padding: 40px 0;
+  }
+  .home h1{
+    font-size: 40px;
+  }
+  .home p{
+    font-size: 20px;
+  }
+  #texto-revelado{
+    font-size: 26px;
+    margin-top: -83px;
+  }
+  .home strong{
+    font-size: 33px;
+  }
+  #container{
+    height: 360px;
+  }
+  .logo-junior {
+      width: 60px;
+      margin-left: 30px;
+      margin-top: 55px;
+      text-align: center;
+      display: flex;
+  }
+  }
+  
+  
+  
+  
+  @media screen and (min-width:1401px) and (max-width: 1800px){
+    .service-left{
+      margin-left: -80px;
+    }
+    .service-right{
+      margin-left: 50px;
+    }
+    #servicos {
+      margin-top: -1%;
+  }
+  }
+  
+  
+  
+  
+  @media screen and (min-width:1111px) and (max-width: 1200px){
+    body{
+      overflow-x: hidden;
+    }
+    .menu-icon {
+      display: none;
+      position: fixed;
+  
+    }
+  
+    .nav-links {
+      display: flex;
+    }
+  
+    .side-menu {
+      width: 36%; 
+    }
+  
+      #mancha img{
+        width: 270%;
+      }
+      #vassoura img{
+        width: 20vw;
+      }
+      @keyframes moverVassoura {
+      0% {
+          top: -25%;
+          left: 0%;
+          transform: rotate(0deg);
+      }
+      40% {
+          left: 30%;
+          transform: rotate(35deg);
+      }
+      47% {
+          transform: rotate(-10deg);
+      }
+      54% {
+          transform: rotate(35deg);
+      }
+      61% {
+          transform: rotate(-10deg);
+      }
+      68% {
+          transform: rotate(35deg);
+      }
+      100% {
+          top: -25%;
+          left: 120%; 
+          transform: rotate(-10deg);
+      }
+    }
+      iframe{
+        display: inline;
+      left: 200px;
+      width: 63%;
+      top: 30vw;
+  
+      }
+      .imagem-escondida{
+        display: block;
+      }
+      .foto2{
+        display: none;
+      }
+      .spray-can {
+        display: flex;
+      }
+      .desenvolvido{
+        display: inline;
+        margin-right: 70px;
+      }
+      .lista{
+        font-size: 14px;
+        display: flex;
+      }
+        .logo-rodape{
+          width: 200px;
+        }
+        .service-item {
+      display: inline;
+      align-items: center;
+      gap: 7%; 
+      margin-bottom: 40px;
+      width: 100%; 
+  }
+  .service-item div{
+    width: 100%;
+  }
+  .service-item img{
+    box-shadow: none;
+  }
+  .foto-escondida {
+  
+      box-shadow: none;
+      width: 55vw;
+      margin-top: 20px;
+  }
+  
+      
+      .depoimentos h6{
+        font-size: 8vw;
+        margin-left: 3vw;
+        margin-top: 50px;
+      }
+      .depoimentos{
+        padding: 100px 0 0 0;
+      }
+      .custom-slide-item img {
+      width: 95%;
+      height: auto;
+      border-radius: 10px;
+      
+  }
+      .animated-image{
+        display: flex;
+        margin-top: -38vw;
+      }
+      .e-mail{
+        display: flex;
+      }
+      .endereço{
+        display: flex;
+      }
+  
+  .service-right {
+      margin-left: 0;
+      margin-right: 0;
+  }
+  
+  .service-left {
+      margin-left: 0;
+  }
+  .service-item img{
+    display: none;
+  }
+  .localização h6{
+    font-size: 13vw;
+  }
+  .hidden-content{
+    height: auto;
+    padding: 5px;
+    margin-top: 0;
+  }
+  .foto-dono{
+    left: 0;
+    top: 20px;
+    width: 70%;
+    left: 50%;
+  }
+  #servicos{
+    margin-top: -1%;
+  }
+  .botao {
+        background-color: #00b6b6;
+        color: white;
+        border: none;
+        padding: 20px 40px;
+        cursor: pointer;
+        font-size: 25px;
+        border-radius: 5px;
+        opacity: 0;
+        transition: opacity 1s;
+        transition: 1s all;
+        display: none;
+        z-index: 2;
+        position:absolute;
+        right: 40%;
+        animation: pulse 2s infinite;
+        border-radius: 30px;
+        box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.3);
+        margin-top: -29%;
+      }
+  
+    .fundo{
+      background-color: #F4FDFE;
+      background-image: none;
+      margin-top: -12vw;
+    }
+    .escondido {
+      text-align: justify;
+      margin-left: -12px;
+      font-style: italic;
+      text-indent: 2em;
+      font-size: 20px;
+      width: 172%;
+      margin-top: 20px;
+  
+  }
+  h3{
+    margin-left: 0;
+    font-size: 8vw;
+  }
+  .custom-slide-item {
+    margin-bottom: 30px; 
+    min-width: 33%;
+  }
+  .escondido2{
+    width: 172%;
+    font-size: 20px;
+    margin-left: -12px;
+  }
+  #servicos{
+      background-image: url("https://imgur.com/MMJWRrm.jpg");
+      margin-top: 0%;
+    }
+  
+    .services h4 {
+      position: relative; 
+      left: -28%; 
+      top: 80px; 
+      font-size: 80px;
+      color: #005d5d;
+      font-family: 'Domine', serif;
+      font-style: italic;
+  }
+    
+    .services {
+      padding: 0 50px 50px 50px;
+      text-align: center;
+      
+    }
+    .services h5{
+      
+      font-size: 35px;
+      font-style: italic;
+      color: #005d5d;
+    }
+    .services p{
+      text-align: justify;
+      font-size: 20px;
+      margin-top: 15px;
+      color: #005d5d;  
+    }
+    
+    .service-container {
+      justify-content: space-around;
+      margin-top: 100px;
+    }
+    
+    .service-item {
+      display: flex;
+      align-items: center;
+      gap: 7%; 
+      margin-bottom: 40px;
+      width: 100%; 
+      
+  }
+  
+  .service-right {
+      flex-direction: row-reverse; 
+      justify-content: flex-end;
+      align-content: center;
+      margin-left: 50px;
+      margin-right: 100px;
+  }
+  
+  .service-left {
+      flex-direction: row-reverse; 
+      justify-content: flex-start;
+      margin-left: -200px;
+  }
+  .imagem-escondida{
+    display:none;
+  }
+  
+  .service-item img {
+      width: 25%; 
+      height: auto;
+      border-radius: 30px;
+      box-shadow: 15px 15px 5px rgba(0, 0, 0, 0.5);
+      display: flex;
+  
+  }
+  
+  .service-item div {
+      width: 40%; 
+      text-align: justify;
+  }
+  .foto-escondida{
+    width: 25%; 
+      height: auto;
+      border-radius: 30px;
+      box-shadow: 15px 15px 5px rgba(0, 0, 0, 0.5);
+  }
+  .resumido{
+    width: 97%;
+  }
+  .localização h6{
+    top: 36px;
+    font-size: 8vw;
+  }
+  .localização div{
+    top: 36px;
+    margin-top: 30px;
+  }
+  .form-wrapper {
+          margin-top: -21vw;
+          margin-left: 23vw;
+      }
+      .localização .mapa, .localização div {
+      position: relative;
+      top: 25px;
+      z-index: 3;
+  }
+  .localização{
+    height: 60vw;
+  }
+  .sobre h2{
+    font-size: 7vw;
+  }
+  .texto-footer{
+    display: flex;
+  }
+  .nav-links a{
+    display: flex;
+    padding: 0 6vw;
+  }
+  .nav-links li:not(:last-child)::after{
+    display: flex;
+  }
+  .navbar, .side-menu, .custom-carrossel-container {
+      max-width: 100%;
+      overflow-x: hidden;
+  }
+  
+  .custom-carrossel {
+      display: flex;
+      flex-wrap: nowrap;
+  }
+  
+  iframe {
+      max-width: 100%;
+      margin-top: -50vw;
+  }
+  
+  
+  
+  .navbar{
+    padding: 40px 0;
+  }
+  .home h1{
+    font-size: 40px;
+  }
+  .home p{
+    font-size: 20px;
+  }
+  #texto-revelado{
+    font-size: 26px;
+    margin-top: -83px;
+  }
+  .home strong{
+    font-size: 33px;
+  }
+  #container{
+    height: 360px;
+  }
+  .logo-junior {
+      width: 60px;
+      margin-left: 30px;
+      margin-top: 55px;
+      text-align: center;
+      display: flex;
+  }
+  }
+  
+  
+  
+  @media screen and (min-width:1000px) and (max-width: 1110px){
+    body{
+      overflow-x: hidden;
+    }
+    .menu-icon {
+      display: none;
+      position: fixed;
+  
+    }
+  
+    .nav-links {
+      display: flex;
+    }
+  
+    .side-menu {
+      width: 36%; 
+    }
+  
+      #mancha img{
+        width: 270%;
+      }
+      #vassoura img{
+        width: 15vw;
+      }
+      @keyframes moverVassoura {
+      0% {
+          top: -25%;
+          left: 0%;
+          transform: rotate(0deg);
+      }
+      40% {
+          left: 30%;
+          transform: rotate(35deg);
+      }
+      47% {
+          transform: rotate(-10deg);
+      }
+      54% {
+          transform: rotate(35deg);
+      }
+      61% {
+          transform: rotate(-10deg);
+      }
+      68% {
+          transform: rotate(35deg);
+      }
+      100% {
+          top: -25%;
+          left: 120%; 
+          transform: rotate(-10deg);
+      }
+    }
+      iframe{
+        display: inline;
+      left: 200px;
+      width: 63%;
+      top: 30vw;
+  
+      }
+      .imagem-escondida{
+        display: block;
+      }
+      .foto2{
+        display: none;
+      }
+      .spray-can {
+        display: flex;
+      }
+      .desenvolvido{
+        display: inline;
+        margin-right: 70px;
+      }
+      .lista{
+        font-size: 14px;
+        display: flex;
+      }
+        .logo-rodape{
+          width: 200px;
+        }
+        .service-item {
+      display: inline;
+      align-items: center;
+      gap: 7%; 
+      margin-bottom: 40px;
+      width: 100%; 
+  }
+  .service-item div{
+    width: 100%;
+  }
+  .service-item img{
+    box-shadow: none;
+  }
+  .foto-escondida {
+  
+      box-shadow: none;
+      width: 55vw;
+      margin-top: 20px;
+  }
+  
+      
+      .depoimentos h6{
+        font-size: 8vw;
+        margin-left: 3vw;
+        margin-top: 50px;
+      }
+      .depoimentos{
+        padding: 100px 0 0 0;
+      }
+      .custom-slide-item img {
+      width: 95%;
+      height: auto;
+      border-radius: 10px;
+      
+  }
+      .animated-image{
+        display: flex;
+        margin-top: -36vw;
+        width: 40%;
+      }
+      .e-mail{
+        display: flex;
+      }
+      .endereço{
+        display: flex;
+      }
+  
+  .service-right {
+      margin-left: 0;
+      margin-right: 0;
+  }
+  
+  .service-left {
+      margin-left: 0;
+  }
+  .service-item img{
+    display: none;
+  }
+  .localização h6{
+    font-size: 13vw;
+  }
+  .hidden-content{
+    height: auto;
+    padding: 5px;
+    margin-top: 0;
+  }
+  .foto-dono{
+    left: 0;
+    top: 20px;
+    width: 70%;
+    left: 50%;
+  }
+  #servicos{
+    margin-top: -1%;
+  }
+  .botao {
+        background-color: #00b6b6;
+        color: white;
+        border: none;
+        padding: 20px 40px;
+        cursor: pointer;
+        font-size: 25px;
+        border-radius: 5px;
+        opacity: 0;
+        transition: opacity 1s;
+        transition: 1s all;
+        display: none;
+        z-index: 2;
+        position:absolute;
+        right: 40%;
+        animation: pulse 2s infinite;
+        border-radius: 30px;
+        box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.3);
+        margin-top: -29%;
+      }
+  
+    .fundo{
+      background-color: #F4FDFE;
+      background-image: none;
+      margin-top: -12vw;
+    }
+    .escondido {
+      text-align: justify;
+      margin-left: -12px;
+      font-style: italic;
+      text-indent: 2em;
+      font-size: 20px;
+      width: 172%;
+      margin-top: 20px;
+  
+  }
+  h3{
+    margin-left: 0;
+    font-size: 8vw;
+  }
+  .custom-slide-item {
+    margin-bottom: 30px; 
+    min-width: 33%;
+  }
+  .escondido2{
+    width: 172%;
+    font-size: 20px;
+    margin-left: -12px;
+  }
+  #servicos{
+      background-image: url("https://imgur.com/MMJWRrm.jpg");
+      margin-top: -1%;
+    }
+  
+    .services h4 {
+      position: relative; 
+      left: -28%; 
+      top: 80px; 
+      font-size: 80px;
+      color: #005d5d;
+      font-family: 'Domine', serif;
+      font-style: italic;
+  }
+    
+    .services {
+      padding: 0 50px 50px 50px;
+      text-align: center;
+      
+    }
+    .services h5{
+      
+      font-size: 35px;
+      font-style: italic;
+      color: #005d5d;
+    }
+    .services p{
+      text-align: justify;
+      font-size: 20px;
+      margin-top: 15px;
+      color: #005d5d;  
+    }
+    
+    .service-container {
+      justify-content: space-around;
+      margin-top: 100px;
+    }
+    
+    .service-item {
+      display: flex;
+      align-items: center;
+      gap: 7%; 
+      margin-bottom: 40px;
+      width: 100%; 
+      
+  }
+  
+  .service-right {
+      flex-direction: row-reverse; 
+      justify-content: flex-end;
+      align-content: center;
+      margin-left: 50px;
+  }
+  
+  .service-left {
+      flex-direction: row-reverse; 
+      justify-content: flex-start;
+      margin-left: -200px;
+  }
+  .imagem-escondida{
+    display:none;
+  }
+  
+  .service-item img {
+      width: 25%; 
+      height: auto;
+      border-radius: 30px;
+      box-shadow: 15px 15px 5px rgba(0, 0, 0, 0.5);
+      display: flex;
+  
+  }
+  
+  .service-item div {
+      width: 40%; 
+      text-align: justify;
+  }
+  .foto-escondida{
+    width: 25%; 
+      height: auto;
+      border-radius: 30px;
+      box-shadow: 15px 15px 5px rgba(0, 0, 0, 0.5);
+  }
+  .resumido{
+    width: 97%;
+  }
+  .localização h6{
+    top: 36px;
+    font-size: 8vw;
+  }
+  .localização div{
+    top: 36px;
+    margin-top: 30px;
+  }
+  .form-wrapper {
+          margin-top: -18vw;
+          margin-left: 20vw;
+          width: 49%;
+      }
+      .localização .mapa, .localização div {
+      position: relative;
+      top: 25px;
+      z-index: 3;
+  }
+  .localização{
+    height: 60vw;
+  }
+  .sobre h2{
+    font-size: 7vw;
+  }
+  .texto-footer{
+    display: flex;
+  }
+  .nav-links a{
+    display: flex;
+    padding: 0 6vw;
+  }
+  .nav-links li:not(:last-child)::after{
+    display: flex;
+  }
+  .navbar, .side-menu, .custom-carrossel-container {
+      max-width: 100%;
+      overflow-x: hidden;
+  }
+  
+  .custom-carrossel {
+      display: flex;
+      flex-wrap: nowrap;
+  }
+  
+  iframe {
+      max-width: 100%;
+      margin-top: -50vw;
+  }
+  
+  
+  
+  .navbar{
+    padding: 40px 0;
+  }
+  .home h1{
+    font-size: 40px;
+  }
+  .home p{
+    font-size: 20px;
+  }
+  #texto-revelado{
+    font-size: 26px;
+    margin-top: -83px;
+  }
+  .home strong{
+    font-size: 33px;
+  }
+  #container{
+    height: 360px;
+  }
+  .logo-junior {
+      width: 60px;
+      margin-left: 30px;
+      margin-top: 55px;
+      text-align: center;
+      display: flex;
+  }
+  
+  }
+  
+  
+  
+  
+  
+  
+  
+  @media screen and (min-width:901px) and (max-width: 999px){
+    body{
+      overflow-x: hidden;
+    }
+    .menu-icon {
+      display: none;
+      position: fixed;
+  
+    }
+  
+    .nav-links {
+      display: flex;
+    }
+  
+    .side-menu {
+      width: 36%; 
+    }
+  
+      #mancha img{
+        width: 270%;
+      }
+      #vassoura img{
+        width: 20vw;
+      }
+      @keyframes moverVassoura {
+      0% {
+          top: -30%;
+          left: 0%;
+          transform: rotate(0deg);
+      }
+      40% {
+          left: 30%;
+          transform: rotate(35deg);
+      }
+      47% {
+          transform: rotate(-10deg);
+      }
+      54% {
+          transform: rotate(35deg);
+      }
+      61% {
+          transform: rotate(-10deg);
+      }
+      68% {
+          transform: rotate(35deg);
+      }
+      100% {
+          top: -30%;
+          left: 120%; 
+          transform: rotate(-10deg);
+      }
+    }
+      iframe{
+        display: inline;
+      left: 200px;
+      width: 63%;
+      top: 30vw;
+  
+      }
+      .imagem-escondida{
+        display: block;
+      }
+      .foto2{
+        display: none;
+      }
+      .spray-can {
+        display: flex;
+      }
+      .desenvolvido{
+        display: inline;
+        margin-right: 70px;
+      }
+      .lista{
+        font-size: 14px;
+        display: flex;
+      }
+        .logo-rodape{
+          width: 200px;
+        }
+        .service-item {
+      display: inline;
+      align-items: center;
+      gap: 7%; 
+      margin-bottom: 40px;
+      width: 100%; 
+  }
+  .service-item div{
+    width: 100%;
+  }
+  .service-item img{
+    box-shadow: none;
+  }
+  .foto-escondida {
+  
+      box-shadow: none;
+      width: 55vw;
+      margin-top: 20px;
+  }
+  
+      
+      .depoimentos h6{
+        font-size: 8vw;
+        margin-left: 3vw;
+        margin-top: 50px;
+      }
+      .depoimentos{
+        padding: 100px 0 0 0;
+      }
+      .custom-slide-item img {
+      width: 95%;
+      height: auto;
+      border-radius: 10px;
+      
+  }
+      .animated-image{
+        display: flex;
+        margin-top: -36vw;
+        width: 40%;
+      }
+      .e-mail{
+        display: flex;
+      }
+      .endereço{
+        display: flex;
+      }
+  
+  .service-right {
+      margin-left: 0;
+      margin-right: 0;
+  }
+  
+  .service-left {
+      margin-left: 0;
+  }
+  .service-item img{
+    display: none;
+  }
+  .localização h6{
+    font-size: 13vw;
+  }
+  .hidden-content{
+    height: auto;
+    padding: 5px;
+    margin-top: 0;
+  }
+  .foto-dono{
+    left: 0;
+    top: 20px;
+    width: 70%;
+    left: 50%;
+  }
+  #servicos{
+    margin-top: -1%;
+  }
+  .botao {
+        background-color: #00b6b6;
+        color: white;
+        border: none;
+        padding: 20px 40px;
+        cursor: pointer;
+        font-size: 25px;
+        border-radius: 5px;
+        opacity: 0;
+        transition: opacity 1s;
+        transition: 1s all;
+        display: none;
+        z-index: 2;
+        position:absolute;
+        right: 40%;
+        animation: pulse 2s infinite;
+        border-radius: 30px;
+        box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.3);
+        margin-top: -29%;
+      }
+  
+    .fundo{
+      background-color: #F4FDFE;
+      background-image: none;
+      margin-top: -12vw;
+    }
+    .escondido {
+      text-align: justify;
+      margin-left: -12px;
+      font-style: italic;
+      text-indent: 2em;
+      font-size: 20px;
+      width: 172%;
+      margin-top: 20px;
+  
+  }
+  h3{
+    margin-left: 0;
+    font-size: 8vw;
+  }
+  .custom-slide-item {
+    margin-bottom: 30px; 
+    min-width: 33%;
+  }
+  .escondido2{
+    width: 172%;
+    font-size: 20px;
+    margin-left: -12px;
+  }
+  #servicos{
+      background-image: url("https://imgur.com/MMJWRrm.jpg");
+      margin-top: 0%;
+    }
+  
+    .services h4 {
+      position: relative; 
+      left: -28%; 
+      top: 80px; 
+      font-size: 80px;
+      color: #005d5d;
+      font-family: 'Domine', serif;
+      font-style: italic;
+  }
+    
+    .services {
+      padding: 0 50px 50px 50px;
+      text-align: center;
+      
+    }
+    .services h5{
+      
+      font-size: 35px;
+      font-style: italic;
+      color: #005d5d;
+    }
+    .services p{
+      text-align: justify;
+      font-size: 20px;
+      margin-top: 15px;
+      color: #005d5d;  
+    }
+    
+    .service-container {
+      justify-content: space-around;
+      margin-top: 100px;
+    }
+    
+    .service-item {
+      display: flex;
+      align-items: center;
+      gap: 7%; 
+      margin-bottom: 40px;
+      width: 100%; 
+      
+  }
+  
+  .service-right {
+      flex-direction: row-reverse; 
+      justify-content: flex-end;
+      align-content: center;
+      margin-left: 50px;
+  }
+  
+  .service-left {
+      flex-direction: row-reverse; 
+      justify-content: flex-start;
+      margin-left: -200px;
+  }
+  .imagem-escondida{
+    display:none;
+  }
+  
+  .service-item img {
+      width: 25%; 
+      height: auto;
+      border-radius: 30px;
+      box-shadow: 15px 15px 5px rgba(0, 0, 0, 0.5);
+      display: flex;
+  
+  }
+  
+  .service-item div {
+      width: 40%; 
+      text-align: justify;
+  }
+  .foto-escondida{
+    width: 25%; 
+      height: auto;
+      border-radius: 30px;
+      box-shadow: 15px 15px 5px rgba(0, 0, 0, 0.5);
+  }
+  .resumido{
+    width: 97%;
+  }
+  .localização h6{
+    top: 36px;
+    font-size: 8vw;
+  }
+  .localização div{
+    top: 36px;
+    margin-top: 30px;
+  }
+  .form-wrapper {
+          margin-top: -18vw;
+          margin-left: 20vw;
+          width: 49%;
+      }
+      .localização .mapa, .localização div {
+      position: relative;
+      top: 25px;
+      z-index: 3;
+  }
+  .localização{
+    height: 60vw;
+  }
+  .sobre h2{
+    font-size: 7vw;
+  }
+  .texto-footer{
+    display: flex;
+  }
+  .nav-links a{
+    display: flex;
+    padding: 0 6vw;
+  }
+  .nav-links li:not(:last-child)::after{
+    display: flex;
+  }
+  .navbar, .side-menu, .custom-carrossel-container {
+      max-width: 100%;
+      overflow-x: hidden;
+  }
+  
+  .custom-carrossel {
+      display: flex;
+      flex-wrap: nowrap;
+  }
+  
+  iframe {
+      max-width: 100%;
+      margin-top: -50vw;
+  }
+  
+  
+  
+  .navbar{
+    padding: 40px 0;
+  }
+  .home h1{
+    font-size: 40px;
+  }
+  .home p{
+    font-size: 20px;
+  }
+  #texto-revelado{
+    font-size: 26px;
+    margin-top: -83px;
+  }
+  .home strong{
+    font-size: 33px;
+  }
+  #container{
+    height: 360px;
+  }
+  .logo-junior {
+      width: 60px;
+      margin-left: 30px;
+      margin-top: 55px;
+      text-align: center;
+      display: flex;
+  }
+  
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  @media screen and (min-width:701px) and (max-width: 900px){
+    .menu-icon {
+      display: block;
+      position: fixed;
+    }
+  
+    .nav-links {
+      display: none; 
+    }
+  
+    .side-menu {
+      width: 36%; 
+    }
+  
+      #mancha img{
+        width: 270%;
+      }
+      #vassoura img{
+        width: 20vw;
+      }
+      @keyframes moverVassoura {
+      0% {
+          top: -25%;
+          left: 0%;
+          transform: rotate(0deg);
+      }
+      40% {
+          left: 30%;
+          transform: rotate(35deg);
+      }
+      47% {
+          transform: rotate(-10deg);
+      }
+      54% {
+          transform: rotate(35deg);
+      }
+      61% {
+          transform: rotate(-10deg);
+      }
+      68% {
+          transform: rotate(35deg);
+      }
+      100% {
+          top: -25%;
+          left: 120%; 
+          transform: rotate(-10deg);
+      }
+    }
+      iframe{
+        display: inline;
+      left: 200px;
+      width: 63%;
+      top: 30vw;
+  
+      }
+      .imagem-escondida{
+        display: block;
+      }
+      .foto2{
+        display: none;
+      }
+      .spray-can {
+        display: none;
+      }
+      .desenvolvido{
+        display: inline;
+        margin-right: 70px;
+      }
+      .lista{
+        font-size: 14px;
+        display: none;
+      }
+        .logo-rodape{
+          width: 200px;
+        }
+        .service-item {
+      display: inline;
+      align-items: center;
+      gap: 7%; 
+      margin-bottom: 40px;
+      width: 100%; 
+  }
+  .service-item div{
+    width: 100%;
+  }
+  .service-item img{
+    box-shadow: none;
+  }
+  .foto-escondida {
+  
+      box-shadow: none;
+      width: 55vw;
+      margin-top: 20px;
+  }
+  .services h5 {
+      font-size: 35px;
+      font-style: italic;
+      color: #005d5d;
+      text-align: center;
+      margin-top: 15vw;
+  }
+      
+      .depoimentos h6{
+        font-size: 8vw;
+        margin-left: 3vw;
+        margin-top: 50px;
+      }
+      .depoimentos{
+        padding: 100px 0 0 0;
+      }
+      .custom-slide-item img {
+      width: 95%;
+      height: auto;
+      border-radius: 10px;
+      
+  }
+      .animated-image{
+        display: none;
+      }
+      .e-mail{
+        display: none;
+      }
+      .endereço{
+        display: none;
+      }
+  
+  .service-right {
+      margin-left: 0;
+      margin-right: 0;
+  }
+  
+  .service-left {
+      margin-left: 0;
+  }
+  .service-item img{
+    display: none;
+  }
+  .localização h6{
+    font-size: 13vw;
+  }
+  .hidden-content{
+    height: auto;
+    padding: 5px;
+    margin-top: 0;
+  }
+  .foto-dono{
+    left: 0;
+    top: 20px;
+    width: 70%;
+    left: 50%;
+  }
+  #servicos{
+    margin-top: -1%;
+  }
+  .botao {
+      display: block !important;
+      opacity: 1;
+      animation: none;
+      position: static;
+      margin: 20px auto;
+      text-align: center;
+      animation: pulse 2s infinite;
+  }
+    .fundo{
+      background-color: #F4FDFE;
+      background-image: none;
+    }
+    .escondido {
+      text-align: justify;
+      margin-left: -12px;
+      font-style: italic;
+      text-indent: 2em;
+      font-size: 20px;
+      width: 172%;
+      margin-top: 20px;
+  
+  }
+  h3{
+    margin-left: 0;
+    font-size: 15vw;
+  }
+  .custom-slide-item {
+    margin-bottom: 30px; 
+    min-width: 33%;
+  }
+  .escondido2{
+    width: 172%;
+    font-size: 20px;
+    margin-left: -12px;
+  }
+  .services h4{
+    left: 2px;
+    font-size: 12vw;
+  }
+  .resumido{
+    width: 97%;
+  }
+  .localização h6{
+    top: 36px;
+    font-size: 11vw;
+  }
+  .localização div{
+    top: 36px;
+  }
+  .form-wrapper {
+          margin-top: 19px;
+          margin-left: 170px;
+      }
+      .localização .mapa, .localização div {
+      position: relative;
+      top: 25px;
+      z-index: 3;
+  }
+  .localização{
+    height: 80vw;
+  }
+  .sobre h2{
+    font-size: 12vw;
+  }
+  .texto-footer{
+    display: none;
+  }
+  .nav-links a{
+    display: none;
+  }
+  .nav-links li:not(:last-child)::after{
+    display: none;
+  }
+  
+  .logo{
+    left: 70px;
+  }
+  .navbar{
+    padding: 40px 0;
+  }
+  .home h1{
+    font-size: 40px;
+  }
+  .home p{
+    font-size: 20px;
+  }
+  #texto-revelado{
+    font-size: 26px;
+    margin-top: -83px;
+  }
+  .home strong{
+    font-size: 33px;
+  }
+  #container{
+    height: 360px;
+  }
+  .logo-junior {
+      width: 60px;
+      margin-left: 30px;
+      margin-top: 55px;
+      text-align: center;
+      display: flex;
+  }
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  @media screen and (min-width:577px) and (max-width: 700px){
+    .menu-icon {
+      display: block;
+      position: fixed;
+    }
+  
+    .nav-links {
+      display: none; 
+    }
+  
+    .side-menu {
+      width: 70%; 
+    }
+  
+      #mancha img{
+        width: 200%;
+      }
+      #vassoura img{
+        width: 25vw;
+      }
+      @keyframes moverVassoura {
+      0% {
+          top: -25%;
+          left: 0%;
+          transform: rotate(0deg);
+      }
+      40% {
+          left: 30%;
+          transform: rotate(35deg);
+      }
+      47% {
+          transform: rotate(-10deg);
+      }
+      54% {
+          transform: rotate(35deg);
+      }
+      61% {
+          transform: rotate(-10deg);
+      }
+      68% {
+          transform: rotate(35deg);
+      }
+      100% {
+          top: -25%;
+          left: 120%; 
+          transform: rotate(-10deg);
+      }
+    }
+      iframe{
+        display: inline;
+      left: 150px;
+      width: 63%;
+      top: 48vw;
+  
+      }
+      .imagem-escondida{
+        display: block;
+      }
+      .foto2{
+        display: none;
+      }
+      .spray-can {
+        display: none;
+      }
+      .desenvolvido{
+        display: inline;
+        margin-right: 0;
+      }
+      .lista{
+        font-size: 14px;
+        display: none;
+      }
+        .logo-rodape{
+          margin: 0;
+          width: 200px;
+        }
+        .service-item {
+      display: inline;
+      align-items: center;
+      gap: 7%; 
+      margin-bottom: 40px;
+      width: 100%; 
+  }
+  .service-item div{
+    width: 100%;
+  }
+  .service-item img{
+    box-shadow: none;
+  }
+  .foto-escondida {
+  
+      box-shadow: none;
+      width: 72vw;
+      margin-top: 20px;
+  }
+  .services h5 {
+      font-size: 35px;
+      font-style: italic;
+      color: #005d5d;
+      text-align: center;
+      margin-top: 15vw;
+  }
+      
+      .depoimentos h6{
+        font-size: 13vw;
+        margin-left: 3vw;
+        margin-top: 50px;
+      }
+      .depoimentos{
+        padding: 100px 0 0 0;
+      }
+      .custom-slide-item img {
+      width: 88%;
+      height: auto;
+      border-radius: 10px;
+      
+  }
+      .animated-image{
+        display: none;
+      }
+      .e-mail{
+        display: none;
+      }
+      .endereço{
+        display: none;
+      }
+  
+  .service-right {
+      margin-left: 0;
+      margin-right: 0;
+  }
+  
+  .service-left {
+      margin-left: 0;
+  }
+  .service-item img{
+    display: none;
+  }
+  .localização h6{
+    font-size: 13vw;
+  }
+  .hidden-content{
+    height: auto;
+    padding: 5px;
+    margin-top: 0;
+  }
+  .foto-dono{
+    left: 0;
+    top: 20px;
+    width: 110%;
+    left: 25%;
+  }
+  #servicos{
+    margin-top: -1%;
+  }
+  .botao {
+      display: block !important;
+      opacity: 1;
+      animation: none;
+      position: static;
+      margin: 20px auto;
+      text-align: center;
+      animation: pulse 2s infinite;
+  }
+    .fundo{
+      background-color: #F4FDFE;
+      background-image: none;
+    }
+    .escondido {
+      text-align: justify;
+      margin-left: -12px;
+      font-style: italic;
+      text-indent: 2em;
+      font-size: 20px;
+      width: 172%;
+      margin-top: 20px;
+  
+  }
+  h3{
+    margin-left: 32px;
+  }
+  .custom-slide-item {
+    margin-bottom: 30px; 
+    min-width: 50%;
+  }
+  .escondido2{
+    width: 172%;
+    font-size: 20px;
+    margin-left: -12px;
+  }
+  .services h4{
+    left: 2px;
+    font-size: 13vw;
+  }
+  .resumido{
+    width: 97%;
+  }
+  .localização h6{
+    top: 36px;
+  }
+  .localização div{
+    top: 36px;
+  }
+  .form-wrapper {
+          margin-top: 19px;
+          margin-left: 82px;
+      }
+      .localização .mapa, .localização div {
+      position: relative;
+      top: 25px;
+      z-index: 3;
+  }
+  .localização{
+    height: 120vw;
+  }
+  .sobre h2{
+    font-size: 15vw;
+  }
+  .texto-footer{
+    display: none;
+  }
+  .nav-links a{
+    display: none;
+  }
+  .nav-links li:not(:last-child)::after{
+    display: none;
+  }
+  
+  .logo{
+    left: 70px;
+  }
+  .navbar{
+    padding: 40px 0;
+  }
+  .home h1{
+    font-size: 40px;
+  }
+  .home p{
+    font-size: 20px;
+  }
+  #texto-revelado{
+    font-size: 26px;
+    margin-top: -83px;
+  }
+  .home strong{
+    font-size: 33px;
+  }
+  #container{
+    height: 360px;
+  }
+  .logo-junior {
+      width: 60px;
+      margin-left: 30px;
+      margin-top: 55px;
+      text-align: center;
+      display: flex;
+  }
+  }
+  
+  
+  
+  
+  
+  @media screen and (min-width:390px) and (max-width: 576px){
+    .menu-icon {
+      display: block;
+      position: fixed;
+    }
+  
+    .nav-links {
+      display: none; 
+    }
+  
+    .side-menu {
+      width: 70%; 
+    }
+  
+      #mancha img{
+        width: 162%;
+      }
+      #vassoura img{
+        width: 35vw;
+      }
+      @keyframes moverVassoura {
+      0% {
+          top: -25%;
+          left: 0%;
+          transform: rotate(0deg);
+      }
+      40% {
+          left: 30%;
+          transform: rotate(35deg);
+      }
+      47% {
+          transform: rotate(-10deg);
+      }
+      54% {
+          transform: rotate(35deg);
+      }
+      61% {
+          transform: rotate(-10deg);
+      }
+      68% {
+          transform: rotate(35deg);
+      }
+      100% {
+          top: -25%;
+          left: 120%; 
+          transform: rotate(-10deg);
+      }
+    }
+      iframe{
+        display: inline;
+      left: 150px;
+      width: 63%;
+      top: 48vw;
+  
+      }
+      .imagem-escondida{
+        display: block;
+      }
+      .foto2{
+        display: none;
+      }
+      .spray-can {
+        display: none;
+      }
+      .desenvolvido{
+        display: inline;
+        margin-right: 0;
+      }
+      .lista{
+        font-size: 14px;
+        display: none;
+      }
+        .logo-rodape{
+          margin: 0;
+          width: 47%;
+        }
+        .service-item {
+      display: inline;
+      align-items: center;
+      gap: 7%; 
+      margin-bottom: 40px;
+      width: 100%; 
+  }
+  .service-item div{
+    width: 100%;
+  }
+  .service-item img{
+    box-shadow: none;
+  }
+  .foto-escondida {
+  
+      box-shadow: none;
+      width: 72vw;
+      margin-top: 20px;
+  }
+  .services h5 {
+      font-size: 35px;
+      font-style: italic;
+      color: #005d5d;
+      text-align: center;
+      margin-top: 15vw;
+  }
+      
+      .depoimentos h6{
+        font-size: 13vw;
+        margin-left: 3vw;
+        margin-top: 50px;
+      }
+      .depoimentos{
+        padding: 100px 0 0 0;
+      }
+      .custom-slide-item img {
+      width: 90%;
+      height: auto;
+      border-radius: 10px;
+  }
+      .animated-image{
+        display: none;
+      }
+      .e-mail{
+        display: none;
+      }
+      .endereço{
+        display: none;
+      }
+  
+  .service-right {
+      margin-left: 0;
+      margin-right: 0;
+  }
+  
+  .service-left {
+      margin-left: 0;
+  }
+  .service-item img{
+    display: none;
+  }
+  .localização h6{
+    font-size: 12vw;
+  }
+  .hidden-content{
+    height: auto;
+    padding: 5px;
+    margin-top: 0;
+  }
+  .foto-dono{
+    left: 0;
+    top: 20px;
+    width: 125%;
+    left: 18%;
+  }
+  #servicos{
+    margin-top: -1%;
+  }
+  .botao {
+      display: block !important;
+      opacity: 1;
+      animation: none;
+      position: static;
+      margin: 20px auto;
+      text-align: center;
+      animation: pulse 2s infinite;
+  }
+    .fundo{
+      background-color: #F4FDFE;
+      background-image: none;
+    }
+    .escondido {
+      text-align: justify;
+      margin-left: -12px;
+      font-style: italic;
+      text-indent: 2em;
+      font-size: 14px;
+      width: 172%;
+      margin-top: 20px;
+  
+  }
+  h3{
+    margin-left: 32px;
+    font-size: 15vw;
+  }
+  .custom-slide-item {
+    min-width: 100%;
+    margin-bottom: 30px; 
+  }
+  .escondido2{
+    width: 172%;
+    font-size: 14px;
+    margin-left: -12px;
+  }
+  .services h4{
+    left: -31px;
+    font-size: 18vw;
+  }
+  .resumido{
+    width: 97%;
+  }
+  .localização h6{
+    top: 36px;
+  }
+  .localização div{
+    top: 36px;
+  }
+  .form-wrapper {
+          margin-top: 19px;
+          margin-left: 82px;
+      }
+      .localização .mapa, .localização div {
+      position: relative;
+      top: 25px;
+      z-index: 3;
+  }
+  .localização{
+    height: 120vw;
+  }
+  .sobre h2{
+    font-size: 15vw;
+  }
+  .texto-footer{
+    display: none;
+  }
+  .nav-links a{
+    display: none;
+  }
+  .nav-links li:not(:last-child)::after{
+    display: none;
+  }
+  
+  .logo{
+    left: 70px;
+  }
+  .navbar{
+    padding: 40px 0;
+  }
+  .home h1{
+    font-size: 40px;
+  }
+  .home p{
+    font-size: 20px;
+  }
+  #texto-revelado{
+    font-size: 26px;
+    margin-top: -83px;
+  }
+  .home strong{
+    font-size: 33px;
+  }
+  #container{
+    height: 360px;
+  }
+  .logo-junior {
+      width: 60px;
+      margin-left: 30px;
+      margin-top: 55px;
+      text-align: center;
+      display: flex;
+  }
+  }
+  
+  
+  
+  @media screen and (min-width: 330px) and (max-width: 389px){
+    .menu-icon {
+      display: block;
+      position: fixed;
+    }
+  
+    .nav-links {
+      display: none; 
+    }
+  
+    .side-menu {
+      width: 70%; 
+    }
+  
+      #mancha img{
+        width: 162%;
+      }
+      #vassoura img{
+        width: 35vw;
+      }
+      @keyframes moverVassoura {
+      0% {
+          top: -25%;
+          left: 0%;
+          transform: rotate(0deg);
+      }
+      40% {
+          left: 30%;
+          transform: rotate(35deg);
+      }
+      47% {
+          transform: rotate(-10deg);
+      }
+      54% {
+          transform: rotate(35deg);
+      }
+      61% {
+          transform: rotate(-10deg);
+      }
+      68% {
+          transform: rotate(35deg);
+      }
+      100% {
+          top: -25%;
+          left: 120%; 
+          transform: rotate(-10deg);
+      }
+    }
+      iframe{
+        display: inline;
+      left: 110px;
+      width: 80%;
+      height: 50vw;
+      top: 40vw;
+  
+      }
+      .texto-desenvolvido {
+          font-size: 10px;
+          color: white;
+          margin: 40px 0 -40px -60px;
+          text-align: center;
+      }
+    
+      .imagem-escondida{
+        display: block;
+      }
+      .foto2{
+        display: none;
+      }
+      .linha{
+        display: none;
+      }
+      .spray-can {
+        display: none;
+      }
+      .desenvolvido{
+        display: inline;
+        margin-right: 0;
+      }
+      .lista{
+        font-size: 14px;
+        display: none;
+      }
+        .logo-rodape{
+          margin: 0;
+          width: 35%;
+        }
+        .service-item {
+      display: inline;
+      align-items: center;
+      gap: 7%; 
+      margin-bottom: 40px;
+      width: 100%; 
+  }
+  .service-item div{
+    width: 100%;
+  }
+  .service-item img{
+    box-shadow: none;
+  }
+  .foto-escondida {
+  
+      box-shadow: none;
+      width: 72vw;
+      margin-top: 20px;
+  }
+  .services h5 {
+      font-size: 35px;
+      font-style: italic;
+      color: #005d5d;
+      text-align: center;
+      margin-top: 15vw;
+  }
+      
+      .depoimentos h6{
+        font-size: 12vw;
+        margin-left: 3vw;
+        margin-top: 50px;
+      }
+      .depoimentos{
+        padding: 100px 0 0 0;
+      }
+      .custom-slide-item img {
+      width: 90%;
+      height: auto;
+      border-radius: 10px;
+  }
+      .animated-image{
+        display: none;
+      }
+      .e-mail{
+        display: none;
+      }
+      .endereço{
+        display: none;
+      }
+  
+  .service-right {
+      margin-left: 0;
+      margin-right: 0;
+  }
+  
+  .service-left {
+      margin-left: 0;
+  }
+  .service-item img{
+    display: none;
+  }
+  .localização h6{
+    font-size: 12vw;
+  }
+  .hidden-content{
+    height: auto;
+    padding: 5px;
+    margin-top: 0;
+  }
+  .foto-dono{
+    left: 0;
+    top: 20px;
+    width: 125%;
+    left: 18%;
+  }
+  #servicos{
+    margin-top: -1%;
+  }
+  .botao {
+      display: block !important;
+      opacity: 1;
+      animation: none;
+      position: static;
+      margin: 20px auto;
+      text-align: center;
+      animation: pulse 2s infinite;
+  }
+    .fundo{
+      background-color: #F4FDFE;
+      background-image: none;
+    }
+    .escondido {
+      text-align: justify;
+      margin-left: -12px;
+      font-style: italic;
+      text-indent: 2em;
+      font-size: 14px;
+      width: 172%;
+      margin-top: 20px;
+  
+  }
+  h3{
+    margin-left: 32px;
+    font-size: 15vw;
+  }
+  .custom-slide-item {
+    min-width: 100%;
+    margin-bottom: 30px; 
+  }
+  .escondido2{
+    width: 172%;
+    font-size: 14px;
+    margin-left: -12px;
+  }
+  .services h4{
+    left: -31px;
+    font-size: 18vw;
+  }
+  .resumido{
+    width: 97%;
+  }
+  .localização h6{
+    top: 36px;
+  
+  }
+  .localização div{
+    top: -13px;
+    height: 180px;
+  }
+  
+  .form-wrapper {
+          margin-top: 19px;
+          margin-left: 82px;
+      }
+      .form-wrapper p {
+        font-size: 20px;
+      }
+      .localização .mapa, .localização div {
+      position: relative;
+      top: 25px;
+      z-index: 3;
+  }
+  .localização{
+    height: 140vw;
+  }
+  .sobre h2{
+    font-size: 15vw;
+  }
+  .texto-footer{
+    display: none;
+  }
+  .nav-links a{
+    display: none;
+  }
+  .nav-links li:not(:last-child)::after{
+    display: none;
+  }
+  
+  .logo{
+    left: 70px;
+  }
+  .navbar{
+    padding: 40px 0;
+  }
+  .home h1{
+    font-size: 40px;
+  }
+  .home p{
+    font-size: 20px;
+  }
+  #texto-revelado{
+    font-size: 26px;
+    margin-top: -83px;
+  }
+  .home strong{
+    font-size: 33px;
+  }
+  #container{
+    height: 360px;
+  }
+  .logo-junior {
+          width: 35px;
+          margin-left: -37px;
+          margin-top: 50px;
+          text-align: center;
+          display: flex;
+      }
+  
+    }
+  
+  
+  
+  
+    @media screen and (min-width: 320px) and (max-width: 329px){
+    .menu-icon {
+      display: block;
+      position: fixed;
+    }
+    .phone-info {
+        font-size: 20px;
+        color: #000000;
+        padding: 5px 0 5px 0;
+        margin-right: 8vw;
+        text-align: center;
+      }
+      footer ul{
+        font-size: 16px;
+      }
+    .button{
+      padding: 17px 25px;
+    }
+  
+    .nav-links {
+      display: none; 
+    }
+  
+    .side-menu {
+      width: 70%; 
+    }
+  
+      #mancha img{
+        width: 162%;
+      }
+      #vassoura img{
+        width: 35vw;
+      }
+      @keyframes moverVassoura {
+      0% {
+          top: -10%;
+          left: 0%;
+          transform: rotate(0deg);
+      }
+      40% {
+          left: 30%;
+          transform: rotate(35deg);
+      }
+      47% {
+          transform: rotate(-10deg);
+      }
+      54% {
+          transform: rotate(35deg);
+      }
+      61% {
+          transform: rotate(-10deg);
+      }
+      68% {
+          transform: rotate(35deg);
+      }
+      100% {
+          top: -10%;
+          left: 120%; 
+          transform: rotate(-10deg);
+      }
+    }
+      iframe{
+        display: inline;
+      left: 110px;
+      width: 80%;
+      height: 50vw;
+      top: 40vw;
+  
+      }
+      .texto-desenvolvido {
+          font-size: 10px;
+          color: white;
+          margin: 40px 0 -40px -60px;
+          text-align: center;
+      }
+    
+      .imagem-escondida{
+        display: block;
+      }
+      .foto2{
+        display: none;
+      }
+      .linha{
+        display: none;
+      }
+      .spray-can {
+        display: none;
+      }
+      .desenvolvido{
+        display: inline;
+        margin-right: 0;
+      }
+      .lista{
+        font-size: 14px;
+        display: none;
+      }
+        .logo-rodape{
+          margin: 0;
+          width: 35%;
+        }
+        .service-item {
+      display: inline;
+      align-items: center;
+      gap: 7%; 
+      margin-bottom: 40px;
+      width: 100%; 
+  }
+  .service-item div{
+    width: 100%;
+  }
+  .service-item img{
+    box-shadow: none;
+  }
+  .foto-escondida {
+  
+      box-shadow: none;
+      width: 72vw;
+      margin-top: 20px;
+  }
+  .services h5 {
+      font-size: 35px;
+      font-style: italic;
+      color: #005d5d;
+      text-align: center;
+      margin-top: 15vw;
+  }
+      
+      .depoimentos h6{
+        font-size: 12vw;
+        margin-left: 3vw;
+        margin-top: 50px;
+      }
+      .depoimentos{
+        padding: 100px 0 0 0;
+      }
+      .custom-slide-item img {
+      width: 90%;
+      height: auto;
+      border-radius: 10px;
+  }
+      .animated-image{
+        display: none;
+      }
+      .e-mail{
+        display: none;
+      }
+      .endereço{
+        display: none;
+      }
+  
+  .service-right {
+      margin-left: 0;
+      margin-right: 0;
+  }
+  
+  .service-left {
+      margin-left: 0;
+  }
+  .service-item img{
+    display: none;
+  }
+  .localização h6{
+    font-size: 13vw;
+  }
+  .hidden-content{
+    height: auto;
+    padding: 5px;
+    margin-top: 0;
+  }
+  .foto-dono{
+    left: 0;
+    top: 20px;
+    width: 125%;
+    left: 18%;
+  }
+  #servicos{
+    margin-top: -1%;
+  }
+  .botao {
+      display: block !important;
+      opacity: 1;
+      animation: none;
+      position: static;
+      margin: 20px auto;
+      text-align: center;
+      animation: pulse 2s infinite;
+  }
+    .fundo{
+      background-color: #F4FDFE;
+      background-image: none;
+    }
+    .escondido {
+      text-align: justify;
+      margin-left: -12px;
+      font-style: italic;
+      text-indent: 2em;
+      font-size: 14px;
+      width: 172%;
+      margin-top: 20px;
+  
+  }
+  h3{
+    margin-left: 32px;
+    font-size: 15vw;
+  }
+  .custom-slide-item {
+    min-width: 100%;
+    margin-bottom: 30px; 
+  }
+  .escondido2{
+    width: 172%;
+    font-size: 14px;
+    margin-left: -12px;
+  }
+  .services h4{
+    left: -31px;
+    font-size: 18vw;
+  }
+  .resumido{
+    width: 97%;
+  }
+  .localização h6{
+    top: 36px;
+  }
+  .localização div{
+    top: -13px;
+    height: 180px;
+  }
+  
+  .form-wrapper {
+          margin-top: 19px;
+          margin-left: 82px;
+      }
+      .form-wrapper p {
+        font-size: 20px;
+      }
+      .localização .mapa, .localização div {
+      position: relative;
+      top: 25px;
+      z-index: 3;
+  }
+  .localização{
+    height: 140vw;
+  }
+  .sobre h2{
+    font-size: 15vw;
+  }
+  .texto-footer{
+    display: none;
+  }
+  .nav-links a{
+    display: none;
+  }
+  .nav-links li:not(:last-child)::after{
+    display: none;
+  }
+  
+  .logo{
+    left: 70px;
+  }
+  .navbar{
+    padding: 40px 0;
+  }
+  .home h1{
+    font-size: 35px;
+  }
+  .home p{
+    font-size: 20px;
+  }
+  #texto-revelado{
+    font-size: 26px;
+    margin-top: -83px;
+  }
+  .home strong{
+    font-size: 33px;
+  }
+  #container{
+    height: 360px;
+  }
+  .logo-junior {
+          width: 35px;
+          margin-left: -37px;
+          margin-top: 50px;
+          text-align: center;
+          display: flex;
+      }
+  
+    }
+  
+  
+  
+  
+  
